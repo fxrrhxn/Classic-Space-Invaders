@@ -23,6 +23,7 @@ pygame.display.set_caption('Space Invaders')
 # Loading resources
 background_image = pygame.image.load('background.jpg')
 mixer.music.load('background.wav')
+mixer.music.play(-1)
 bullet_sound = mixer.Sound('laser.wav')
 explosion_sound = mixer.Sound('explosion.wav')
 over = pygame.font.Font("freesansbold.ttf", 55)
@@ -126,6 +127,7 @@ running = True
 clock = pygame.time.Clock()
 
 while running:
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
