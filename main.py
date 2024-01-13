@@ -16,23 +16,23 @@ SHOOT_COOLDOWN = 500  # in milliseconds
 
 # Display
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-icon = pygame.image.load('spaceship.png')
+icon = pygame.image.load('game_resources/spaceship.png')
 pygame.display.set_icon(icon)
 pygame.display.set_caption('Space Invaders')
 
 # Loading resources
-background_image = pygame.image.load('background.jpg')
-mixer.music.load('background.wav')
+background_image = pygame.image.load('game_resources/background.jpg')
+mixer.music.load('game_resources/background.wav')
 mixer.music.play(-1)
-bullet_sound = mixer.Sound('laser.wav')
-explosion_sound = mixer.Sound('explosion.wav')
+bullet_sound = mixer.Sound('game_resources/laser.wav')
+explosion_sound = mixer.Sound('game_resources/explosion.wav')
 over = pygame.font.Font("freesansbold.ttf", 55)
 
 # Player
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load('player_ship.png')
+        self.image = pygame.image.load('game_resources/player_ship.png')
         self.rect = self.image.get_rect()
         self.rect.x = SCREEN_WIDTH // 2 - self.rect.width // 2
         self.rect.y = SCREEN_HEIGHT - self.rect.height - 10
@@ -59,7 +59,7 @@ class Player(pygame.sprite.Sprite):
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load('enemy.png')
+        self.image = pygame.image.load('game_resources/enemy.png')
         self.rect = self.image.get_rect()
         self.rect.x = random.randint(0, SCREEN_WIDTH - self.rect.width)
         self.rect.y = random.randint(30, SCREEN_HEIGHT - 200)
@@ -76,7 +76,7 @@ class Enemy(pygame.sprite.Sprite):
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, player_rect):
         super().__init__()
-        self.image = pygame.image.load('bullet.png')
+        self.image = pygame.image.load('game_resources/bullet.png')
         self.rect = self.image.get_rect()
         self.rect.x = player_rect.x + player_rect.width // 2 - self.rect.width // 2
         self.rect.y = player_rect.y
