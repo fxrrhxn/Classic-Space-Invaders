@@ -122,6 +122,9 @@ textY = 10
 # Level
 level = 1
 
+# fullscreen flag:
+fullscreen = False
+
 # Main game loop
 running = True
 clock = pygame.time.Clock()
@@ -131,12 +134,26 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+            sys.exit()
 
         if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_f:
+                fullscreen = not fullscreen
+                if fullscreen:
+                    screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+                    player.rect.x = SCREEN_WIDTH // 2 + 90 - player.rect.width // 2 + 90
+                    player.rect.y = SCREEN_HEIGHT - player.rect.height + 130
+                else:
+                    player.rect.x = SCREEN_WIDTH // 2 - player.rect.width // 2
+                    player.rect.y = SCREEN_HEIGHT - player.rect.height - 10
+                    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
             if event.key == pygame.K_RIGHT:
                 player.change_x += PLAYER_SPEED
+
             if event.key == pygame.K_LEFT:
                 player.change_x -= PLAYER_SPEED
+
             if event.key == pygame.K_SPACE:
                 player.shoot()
 
@@ -172,12 +189,12 @@ while running:
     # Level progression
     if score_value >= level * 10:
         level += 1
-        ENEMY_COUNT += 2  # Increase the number of enemies with each level
-        for _ in range(2):
+        ENEMY_COUNT += 5  # Increase the number of enemies with each level 
+        for _ in range(5): # new-update: enemies now increase by 5 instead of 2
             enemy = Enemy()
             all_sprites.add(enemy)
             enemies.add(enemy)
 
     # Update the display
     pygame.display.flip()
-    clock.tick(60)
+    clock.tick(120) # updates the frames to 120 from 60
