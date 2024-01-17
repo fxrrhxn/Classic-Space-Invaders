@@ -86,6 +86,7 @@ Space Invaders is a classic arcade-style game implemented in Python using the Py
 - **⬅️ Left Arrow Key:** Move spaceship left.
 - **➡️ Right Arrow Key:** Move spaceship right.
 - **🚀 Space Bar:** Shoot bullets.
+- **🔳 F Key:** Toggle full screen mode on/off.
 
 ## Acknowledgments
 
