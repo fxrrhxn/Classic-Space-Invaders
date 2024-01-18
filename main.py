@@ -197,4 +197,4 @@ while running:
 
     # Update the display
     pygame.display.flip()
-    clock.tick(120) # updates the frames to 120 from 60
+    clock.tick(120) # updated the frames to 120 from 60
